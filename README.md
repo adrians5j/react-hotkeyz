@@ -11,6 +11,7 @@
 A component that enables registration of hotkeys per z-index. 
 
 Before:
+
 ![A broken example](./docs/keys-no.gif)
 
 With `react-hotkeyz`:
