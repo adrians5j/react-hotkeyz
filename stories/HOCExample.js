@@ -39,7 +39,15 @@ class HOCExample extends React.Component<Props, State> {
                         </button>
                     </div>
                     {this.state.currentZIndex >= 1 && (
-                        <Hotkeys zIndex={1} keys={{ esc: this.decrementZIndex }}>
+                        <Hotkeys
+                            zIndex={1}
+                            keys={{
+                                esc: e => {
+                                    this.decrementZIndex();
+                                    e.stopPropagation();
+                                }
+                            }}
+                        >
                             <div>
                                 <button
                                     disabled={currentZIndex !== 1}
@@ -51,7 +59,15 @@ class HOCExample extends React.Component<Props, State> {
                         </Hotkeys>
                     )}
                     {this.state.currentZIndex >= 2 && (
-                        <Hotkeys zIndex={2} keys={{ esc: this.decrementZIndex }}>
+                        <Hotkeys
+                            zIndex={2}
+                            keys={{
+                                esc: e => {
+                                    this.decrementZIndex();
+                                    e.stopPropagation();
+                                }
+                            }}
+                        >
                             <div>
                                 <button
                                     disabled={currentZIndex !== 2}
@@ -63,7 +79,15 @@ class HOCExample extends React.Component<Props, State> {
                         </Hotkeys>
                     )}
                     {this.state.currentZIndex >= 3 && (
-                        <Hotkeys zIndex={3} keys={{ esc: this.decrementZIndex }}>
+                        <Hotkeys
+                            zIndex={3}
+                            keys={{
+                                esc: e => {
+                                    this.decrementZIndex();
+                                    e.stopPropagation();
+                                }
+                            }}
+                        >
                             <div>Now try pressing &quot;Esc&quot; key</div>
                         </Hotkeys>
                     )}

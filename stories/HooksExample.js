@@ -14,9 +14,36 @@ function HooksExample() {
         setCurrentZIndex(currentZIndex + 1);
     };
 
-    useHotkeys({ zIndex: 1, keys: { esc: decrementZIndex }, disabled: currentZIndex !== 1 });
-    useHotkeys({ zIndex: 2, keys: { esc: decrementZIndex }, disabled: currentZIndex !== 2 });
-    useHotkeys({ zIndex: 3, keys: { esc: decrementZIndex }, disabled: currentZIndex !== 3 });
+    useHotkeys({
+        zIndex: 1,
+        keys: {
+            esc: e => {
+                e.stopPropagation();
+                decrementZIndex();
+            }
+        },
+        disabled: currentZIndex !== 1
+    });
+    useHotkeys({
+        zIndex: 2,
+        keys: {
+            esc: e => {
+                e.stopPropagation();
+                decrementZIndex();
+            }
+        },
+        disabled: currentZIndex !== 2
+    });
+    useHotkeys({
+        zIndex: 3,
+        keys: {
+            esc: e => {
+                e.stopPropagation();
+                decrementZIndex();
+            }
+        },
+        disabled: currentZIndex !== 3
+    });
 
     return (
         <Story>

@@ -28,9 +28,6 @@ const state: State = {
 };
 
 function triggerHotkeys(e: Event) {
-    e.preventDefault();
-    e.stopPropagation();
-
     if (state.zIndex === null) {
         return;
     }
@@ -38,7 +35,7 @@ function triggerHotkeys(e: Event) {
     const keys = state.handlers[state.zIndex];
     for (let key in keys) {
         if (isHotkey(key, e)) {
-            keys[key]();
+            keys[key](e);
             break;
         }
     }
