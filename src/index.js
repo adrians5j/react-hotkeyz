@@ -5,7 +5,7 @@ import isHotkey from "is-hotkey";
 type HookProps = {
     disabled?: boolean,
     zIndex: number,
-    keys: { [string]: Function }
+    keys?: { [string]: Function }
 };
 
 type HocProps = {
