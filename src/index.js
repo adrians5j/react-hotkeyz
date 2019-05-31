@@ -98,18 +98,21 @@ const { useEffect, useRef } = React;
 export function useHotkeys(props: HookProps) {
     const { disabled, zIndex, keys } = props;
 
-    const prevDisabledRef = useRef();
+    const refs = {
+        prevProps: useRef(),
+        firstRender: useRef(true)
+    };
 
     useEffect(function() {
-        if (prevDisabledRef.current !== disabled) {
+        if (refs.firstRender.current || refs.prevProps.current.disabled !== disabled) {
+            refs.firstRender.current = false;
             disabled ? unregisterZIndex(props) : registerZIndex(props);
         }
 
-        if (!disabled) {
+        if (!disabled && typeof keys === "object") {
             Object.assign(state.handlers[zIndex], keys);
         }
-
-        prevDisabledRef.current = disabled;
+        refs.prevProps.current = { ...props };
     });
 }
 
