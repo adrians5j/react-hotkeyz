@@ -37,6 +37,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "babel-preset-minify": "^0.5.0",
     "concurrently": "^4.1.0",
     "coveralls": "^3.0.2",
     "css-loader": "^2.0.2",
@@ -51,10 +52,10 @@
     "jest-dom": "^3.0.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
+    "react-syntax-highlighter": "^10.1.2",
     "react-testing-library": "^5.4.2",
     "semantic-release": "^15.13.3",
-    "wait-on": "^3.2.0",
-    "react-syntax-highlighter": "^10.1.2"
+    "wait-on": "^3.2.0"
   },
   "peerDependencies": {
     "react": ">=0.16.8"
@@ -67,7 +68,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "cz": "git-cz",
-    "build": "babel src --out-dir dist --source-maps --ignore **/*.test.js",
+    "build": "babel src --out-dir dist --source-maps --ignore **/*.test.js --no-comments",
     "postbuild": "npm run flow-copy-source",
     "flow-copy-source": "flow-copy-source src dist --ignore **/*.test.js",
     "test": "npm run test:jest:src",
