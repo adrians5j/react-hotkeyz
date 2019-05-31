@@ -9,7 +9,7 @@ type HookProps = {
 };
 
 type HocProps = {
-    children: React.Node,
+    children: ?React.Node,
     disabled?: boolean,
     zIndex: number,
     keys: { [string]: Function }
