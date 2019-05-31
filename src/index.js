@@ -93,19 +93,24 @@ function unregisterZIndex({ zIndex, keys }) {
     }
 }
 
-const { useEffect } = React;
+const { useEffect, useRef } = React;
 
 export function useHotkeys(props: HookProps) {
-    const { disabled } = props;
-    useEffect(() => {
-        disabled ? unregisterZIndex(props) : registerZIndex(props);
-        return () => {
-            if (disabled) {
-                return;
-            }
-            unregisterZIndex(props);
-        };
-    }, [disabled]);
+    const { disabled, zIndex, keys } = props;
+
+    const prevDisabledRef = useRef();
+
+    useEffect(function() {
+        if (prevDisabledRef.current !== disabled) {
+            disabled ? unregisterZIndex(props) : registerZIndex(props);
+        }
+
+        if (!disabled) {
+            Object.assign(state.handlers[zIndex], keys);
+        }
+
+        prevDisabledRef.current = disabled;
+    });
 }
 
 export function Hotkeys({ children, ...props }: HocProps) {
