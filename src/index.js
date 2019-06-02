@@ -114,6 +114,12 @@ export function useHotkeys(props: HookProps) {
         }
         refs.prevProps.current = { ...props };
     });
+
+    useEffect(function() {
+        return function() {
+            !disabled && unregisterZIndex(props);
+        };
+    }, []);
 }
 
 export function Hotkeys({ children, ...props }: HocProps) {
